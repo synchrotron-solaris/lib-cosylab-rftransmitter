@@ -1,0 +1,14 @@
+# Exclude object files
+*.[oa]
+
+# Exclude executables
+*.
+!Makefile
+!Doxyfile
+
+# Exclude Qt user specific files
+*.user
+
+# Exclude backups
+*.*~
+*~
