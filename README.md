@@ -12,8 +12,8 @@ This repository depends on the SNMP++-devel yum package.
 
 Clone this repository and install the package in order to build it:
 
-- yum install SNMP++-devel
-    
+- Build instructions are provided in documentation
+- SNMP++ library package is provided inside lib-cosylab-rftransmitter
 
 Building the RFtransmitter library
 -------------------------------------
