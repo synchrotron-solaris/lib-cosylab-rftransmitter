@@ -15,7 +15,7 @@ SOURCES = src/snmpconnector.cpp \
 	
 OBJS = $(SOURCES:.cpp=.o)
 
-FLAGS = -O3 -Wall -fPIC -std=c++0x -I./include -lsnmp++
+FLAGS = -O3 -Wall -fPIC -std=c++0x -DSTDCXX_98_HEADERS -DHAVE_NAMESPACE_STD -I./include -lsnmp++
 COMPILER = g++
 
 all: $(LIBRARY)

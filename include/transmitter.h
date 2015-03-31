@@ -74,8 +74,8 @@ public:
 
 private:
     const std::shared_ptr<SNMPconnector> snmpW; //!< Write connection.
-    const std::string diagRequestName = "diagTrans"; //!< Name of the SNMP requests for diagnostics.
-    const std::string upadateParamsName = "TRANSsupdate"; //!< Name of the command to update parameters.
+    static const std::string diagRequestName; //!< Name of the SNMP requests for diagnostics.
+    static const std::string upadateParamsName; //!< Name of the command to update parameters.
 
     /// No locks needed for updating and reading component parameters. ///
     std::atomic<uint32_t> nominalPower; //!< Holder for nominal power.

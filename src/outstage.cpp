@@ -1,5 +1,7 @@
 #include "outstage.h"
 
+const std::string OutStage::upadateParamsName = "OSupdate";
+
 OutStage::OutStage(const std::shared_ptr<SNMPconnector> snmp, const std::shared_ptr<SNMPconnector> snmpW)
     : RFcomponent(oids[OIDS::OSTAGE_SUMMARY], "OutStage", snmp), snmpW(snmpW)
 {

@@ -34,12 +34,12 @@ public:
     inline const std::array<std::atomic<int32_t>, numberOfLiquidDevices>& getOutTemps() { return outTemp; }
 
 private:    
-    const std::array<std::string, numberOfLiquidDevices> diagRequestName { { "diagLQ", "diagLQ2" } }; //!< Name of the SNMP requests for diagnostics for each component.
-    const std::string upadateParamsName = "LQupdate"; //!< Name of the SNMP update parameters request.
+    std::array<std::string, numberOfLiquidDevices> diagRequestName; //!< Name of the SNMP requests for diagnostics for each component.
+    std::string upadateParamsName; //!< Name of the SNMP update parameters request.
 
     /// No locks needed for updating and reading component parameters. ///
-    std::array<std::atomic<int32_t>, numberOfLiquidDevices> inTemp = { {} }; //!< Holder for inlet temperatures.
-    std::array<std::atomic<int32_t>, numberOfLiquidDevices> outTemp = { {} }; //!< Holder for outlet temperatures.
+    std::array<std::atomic<int32_t>, numberOfLiquidDevices> inTemp; //!< Holder for inlet temperatures.
+    std::array<std::atomic<int32_t>, numberOfLiquidDevices> outTemp; //!< Holder for outlet temperatures.
 };
 
 #endif // LIQUIDCOOLING_H

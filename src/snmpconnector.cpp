@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 
+
 SNMPconnector::SNMPconnector(const std::string& ip, const std::string& community, const uint16_t port, const uint16_t timeout, const uint16_t retries)
 {
     // Start the socket resource acquisition.
@@ -61,9 +62,9 @@ void SNMPconnector::createRequest(const std::string& name, const std::vector<std
     VBs.reserve(oids.size()); // We know the number of VBs in advance.
 
     // Each OID gets its own VB.
-    for(const auto& it : oids)
+    for(size_t i = 0; i < oids.size(); i++)
     {
-        VBs.push_back(Snmp_pp::Vb(Snmp_pp::Oid(it.c_str())));
+        VBs.push_back(Snmp_pp::Vb(Snmp_pp::Oid(oids[i].c_str())));
     }
 
     if(0 == requests.at(name).first->set_vblist(&VBs.at(0), VBs.size())) // Add whole list at once to PDU. Check for success.
@@ -124,8 +125,8 @@ void SNMPconnector::addToMap(const std::string& name, const uint16_t noElements)
     }
 
     // Add to collection of request with a given name.
-    requests.insert(std::pair<std::string, std::pair<std::unique_ptr<Snmp_pp::Pdu>, uint16_t> >
-                    (name, std::pair<std::unique_ptr<Snmp_pp::Pdu>, uint16_t>(std::unique_ptr<Snmp_pp::Pdu>(new Snmp_pp::Pdu), noElements)));
+    requests.insert(std::pair<std::string, std::pair<std::shared_ptr<Snmp_pp::Pdu>, uint16_t> >
+                    (name, std::pair<std::shared_ptr<Snmp_pp::Pdu>, uint16_t>(std::shared_ptr<Snmp_pp::Pdu>(new Snmp_pp::Pdu), noElements)));
 }
 
 std::vector<std::string> SNMPconnector::extractData(const int32_t status, const Snmp_pp::Pdu& pdu, const bool ignoreSyntaxErrors)

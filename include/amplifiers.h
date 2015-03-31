@@ -2,6 +2,7 @@
 #define AMPLIFIERS_H
 
 #include "rfcomponent.h"
+#include <array>
 
 class Amplifiers : public RFcomponent
 {
@@ -29,8 +30,8 @@ public:
 
 private:
     std::array<std::atomic<int32_t>, noAmplifiers> ampOn; //!< Array of amp switch states.
-    const std::string upadateParamsName = "AMPupdate"; //!< Name of the SNMP update parameters request.
-    const std::string diagRequestName = "diagAMP"; //!< Name of the SNMP requests for diagnostics.
+    static const std::string upadateParamsName; //!< Name of the SNMP update parameters request.
+    static const std::string diagRequestName; //!< Name of the SNMP requests for diagnostics.
 };
 
 #endif // AMPLIFIERS_H

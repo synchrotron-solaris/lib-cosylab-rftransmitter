@@ -1,6 +1,9 @@
 #include "amplifiers.h"
 #include <sstream>
 
+const std::string Amplifiers::upadateParamsName = "AMPupdate";
+const std::string Amplifiers::diagRequestName = "rectangle";
+
 Amplifiers::Amplifiers(const std::vector<uint16_t>& indexList, const std::shared_ptr<SNMPconnector> snmp) :
     RFcomponent(transformToOids(oids[OIDS::AMP_SUMMARY], indexList), "AMPs", snmp)
 {

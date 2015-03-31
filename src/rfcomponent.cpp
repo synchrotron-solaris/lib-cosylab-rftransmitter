@@ -79,10 +79,10 @@ std::vector<std::string> RFcomponent::transformToOids(const std::string& baseOid
 {
     std::vector<std::string> toReturn;
 
-    for(const auto& value : indexList)
+    for(size_t i = 0; i < indexList.size(); i++)
     {
         std::stringstream idx;
-        if(!(idx << value))
+        if(!(idx << indexList[i]))
         {
             throw RfComponentException("Failed to transform index value to string.");
         }

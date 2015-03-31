@@ -5,6 +5,10 @@ LiquidCooling::LiquidCooling(const std::vector<uint16_t>& indexList, const std::
     : RFcomponent(transformToOids(oids[OIDS::LQC_SUMMARY], indexList), "LiquidCooling", snmp)
 {
     std::vector<std::string> nodes = transformToOids(oids[OIDS::LQC_SUMMARY], indexList);
+
+    upadateParamsName = "LQupdate";
+    diagRequestName[0] = "LQdiag1";
+    diagRequestName[1] = "LQdiag2";
     // Create diag request. There are 2 since we have 2 LQs in the system.
     snmp->createBulkRequest(diagRequestName[0], nodes.at(0), noDiagNodes);
     snmp->createBulkRequest(diagRequestName[1], nodes.at(1), noDiagNodes);
@@ -36,7 +40,8 @@ void LiquidCooling::diagnose(const std::vector<std::string>& summaryValues)
 
     try
     {
-        states = { convertToValue<int32_t>(summaryValues[0]), convertToValue<int32_t>(summaryValues[1]) };
+        states[0] = convertToValue<int32_t>(summaryValues[0]);
+	states[1] = convertToValue<int32_t>(summaryValues[1]);
     }
     catch(const SNMPconnectorException& e)
     {

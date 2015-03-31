@@ -33,8 +33,8 @@ public:
 private:
     std::atomic<uint32_t> forwardSt; //!< Forward power state.
     std::atomic<uint32_t> reflectedSt; //!< Reflected power state.
-    const std::string diagRequestName = "diagRFS"; //!< Name of the SNMP requests for diagnostics.
-    const std::string upadateParamsName = "RFSsupdate"; //!< Name of the command to update parameters.
+    static const std::string diagRequestName; //!< Name of the SNMP requests for diagnostics.
+    static const std::string upadateParamsName; //!< Name of the command to update parameters.
 };
 
 #endif // RFSENSOR_H

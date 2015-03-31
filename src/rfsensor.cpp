@@ -1,6 +1,9 @@
 #include "rfsensor.h"
 #include <sstream>
 
+const std::string RFsensor::diagRequestName = "diagRFS";
+const std::string RFsensor::upadateParamsName = "RFSsupdate";
+
 RFsensor::RFsensor(const std::shared_ptr<SNMPconnector> snmp) :
     RFcomponent(oids[OIDS::RF_LINK], "RFsensor", snmp)
 {

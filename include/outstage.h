@@ -37,7 +37,7 @@ public:
 
 private:    
     const std::shared_ptr<SNMPconnector> snmpW; //!< Write connection.
-    const std::string upadateParamsName = "OSupdate"; //!< Name of the command to update parameters.
+    static const std::string upadateParamsName; //!< Name of the command to update parameters.
 
     /// No locks needed for updating and reading component parameters. ///
     std::atomic<uint32_t> power; //!< Output stage power.

@@ -7,6 +7,9 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <stdexcept>
+#include <utility>
+
 
 /**
  * @brief The SNMPconnectorException class Used to wrap return codes and throw SNMP exceptions.
@@ -78,7 +81,7 @@ private:
 
     std::unique_ptr<Snmp_pp::CTarget> cTarget; //!< Target for SNMPv2c messages.
     std::unique_ptr<Snmp_pp::Snmp> snmpSession; //!< SNMP session.
-    std::unordered_map<std::string, std::pair<std::unique_ptr<Snmp_pp::Pdu>, uint16_t> > requests; //!< Map of all registered requests that the user can execute.
+    std::unordered_map<std::string, std::pair<std::shared_ptr<Snmp_pp::Pdu>, uint16_t> > requests; //!< Map of all registered requests that the user can execute.
 
     void addToMap(const std::string& name, const uint16_t noElements = 0); /// Helper function for adding new requests to the map.
     std::vector<std::string> extractData(const int32_t status, const Snmp_pp::Pdu& pdu, const bool ignoreSyntaxErrors);

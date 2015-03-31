@@ -1,6 +1,9 @@
 #include "transmitter.h"
 #include <sstream>
 
+const std::string Transmitter::upadateParamsName = "TRANSsupdate";
+const std::string Transmitter::diagRequestName = "diagTrans";
+
 Transmitter::Transmitter(const std::shared_ptr<SNMPconnector> snmp, const std::shared_ptr<SNMPconnector> snmpW)
     : RFcomponent(oids[OIDS::TRANS_SUMMARY], "Transmitter", snmp), snmpW(snmpW)
 {
